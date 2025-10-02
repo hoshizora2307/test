@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             questionCountEl.textContent = `第 ${currentQuestionIndex + 1} 問 / 全 ${questions.length} 問`;
             questionEl.textContent = currentQuestion.question;
 
-            // 選択肢をシャッフルして表示
             const shuffledOptions = shuffleArray([...currentQuestion.options]);
             const choiceButtons = choicesContainer.querySelectorAll('.choice-btn');
             choiceButtons.forEach((button, index) => {
@@ -119,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resultMessageEl.classList.remove('correct');
             resultMessageEl.classList.add('incorrect');
             
-            // 正解のボタンもハイライト
             choicesContainer.querySelectorAll('.choice-btn').forEach(btn => {
                 if (btn.textContent === correctAnswer) {
                     btn.classList.add('correct-answer');
@@ -135,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
     
-    // 配列をシャッフルする関数
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -171,4 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }, 3000);
     });
+
+    // 最初のクイズ画面の表示
+    // startQuiz(); // オープニング画面から開始するためコメントアウト
 });
