@@ -1,6 +1,6 @@
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    background-color: #fce4ec;
+    background: linear-gradient(to bottom, #d6eaf8, #aed6f1, #85c1e9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,13 +20,13 @@ body {
 }
 
 header h1 {
-    color: #e91e63;
+    color: #3498db;
     font-size: 2em;
     margin-bottom: 5px;
 }
 
 #question-count {
-    color: #66bb6a;
+    color: #27ae60;
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -53,7 +53,7 @@ header h1 {
 #submit-btn {
     padding: 10px 20px;
     margin-top: 15px;
-    background-color: #ff69b4;
+    background-color: #3498db;
     color: white;
     border: none;
     border-radius: 25px;
@@ -73,11 +73,11 @@ header h1 {
 }
 
 #result-message.correct {
-    color: #66bb6a;
+    color: #27ae60;
 }
 
 #result-message.incorrect {
-    color: #e91e63;
+    color: #e74c3c;
 }
 
 #score-area {
@@ -87,13 +87,13 @@ header h1 {
 #final-score {
     font-size: 2em;
     font-weight: bold;
-    color: #e91e63;
+    color: #3498db;
 }
 
 #restart-btn {
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #66bb6a;
+    background-color: #27ae60;
     color: white;
     border: none;
     border-radius: 25px;
