@@ -24,8 +24,12 @@
         <main>
             <div id="quiz-area">
                 <p id="question"></p>
-                <input type="text" id="answer-input" placeholder="答えを入力してね">
-                <button id="submit-btn">こたえる！</button>
+                <div id="choices-container">
+                    <button class="choice-btn" data-choice="0"></button>
+                    <button class="choice-btn" data-choice="1"></button>
+                    <button class="choice-btn" data-choice="2"></button>
+                    <button class="choice-btn" data-choice="3"></button>
+                </div>
                 <p id="result-message"></p>
             </div>
             
