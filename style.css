@@ -84,7 +84,7 @@ body {
 /* オープニング画面のタイトル、スマホ対応 */
 @media (max-width: 600px) {
     .splash-title {
-        font-size: 2.5em; /* スマホではフォントサイズを小さく */
+        font-size: 2.5em;
         letter-spacing: 2px;
     }
 }
@@ -143,6 +143,7 @@ body {
 body.main-loaded {
     overflow-y: auto;
 }
+
 
 /* --- メインクイズ画面のスタイル --- */
 .container {
