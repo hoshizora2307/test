@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.textContent = shuffledOptions[index];
                 button.classList.remove('correct-answer', 'incorrect-answer');
                 button.disabled = false;
-                button.addEventListener('click', checkAnswer);
+                button.onclick = checkAnswer; // イベントリスナーを修正
             });
 
             resultMessageEl.textContent = "";
@@ -170,5 +170,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 最初のクイズ画面の表示
-    // startQuiz(); // オープニング画面から開始するためコメントアウト
+    // startQuiz();
 });
