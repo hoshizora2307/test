@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const riddles = [
-        { question: "「夏の大三角」を形成する３つの１等星。ベガ・アルタイルともう一つは何？", answer: "デネブ" ｝,
-        { question: "「火星に対抗するもの」という名の恒星は何？", answer: "アンタレス" },
-        { question: "国際天文学連合が定めている星座の数は何個？", answer: "88個" },
-        { question: "「北斗七星」は何座にある？", answer: "おおぐま座" },
-        { question: "「大三角」がない唯一の季節は？", answer: "秋" },
-        { question: "お隣の銀河の名前は？", answer: "アンドロメダ銀河" },
-        { question: "一番明るく見える星(恒星)は何？", answer: "シリウス" },
-        { question: "1等星の中で、最も暗い星は何？", answer: "レグルス" },
-        { question: "「へびつかい座」の頭の部分の星の名前は？", answer: "ラスアルハゲ" },
-        { question: "2017年に初めて観測した恒星間天体の名前は？", answer: "オウムアムア" }
+    const questions = [
+        { question: "夏の夜空に輝く「夏の大三角」を構成する3つの星の名前をすべて答えてください。（例：○○、○○、○○）", answer: "ベガ、アルタイル、デネブ" },
+        { question: "七夕伝説で知られる織姫星は、どの星座に属する星でしょう？", answer: "こと座" },
+        { question: "天の川を流れるように見える、この星座の名前は何でしょう？", answer: "はくちょう座" },
+        { question: "夏の大三角を形作るもう一つの星、彦星の名前は何でしょう？", answer: "アルタイル" },
+        { question: "さそり座の心臓部分で赤く輝く一等星の名前は何でしょう？", answer: "アンタレス" },
+        { question: "はくちょう座のくちばしに位置する、夏の大三角を形作る星はどれでしょう？", answer: "デネブ" },
+        { question: "夏の星座で最も大きく、空いっぱいに広がる星座は何でしょう？", answer: "へびつかい座" },
+        { question: "夏に南の空に見える、大きな弓を引いたような形の星座は何でしょう？", answer: "いて座" },
+        { question: "夏の大三角を形作る星のうち、最も明るい一等星はどれでしょう？", answer: "ベガ" },
+        { question: "夏の夜空で、南十字星の代わりとしてよく使われる星の並びは「何座」でしょう？", answer: "さそり座" }
     ];
 
     let currentQuestionIndex = 0;
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadQuestion() {
-        if (currentQuestionIndex < riddles.length) {
-            const currentRiddle = riddles[currentQuestionIndex];
-            questionCountEl.textContent = `第 ${currentQuestionIndex + 1} 問 / 全 ${riddles.length} 問`;
-            questionEl.textContent = currentRiddle.question;
+        if (currentQuestionIndex < questions.length) {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionCountEl.textContent = `第 ${currentQuestionIndex + 1} 問 / 全 ${questions.length} 問`;
+            questionEl.textContent = currentQuestion.question;
             answerInput.value = "";
             resultMessageEl.textContent = "";
             submitBtn.disabled = false;
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkAnswer() {
         const userAnswer = answerInput.value.trim().toLowerCase();
-        const correctAnswer = riddles[currentQuestionIndex].answer.trim().toLowerCase();
+        const correctAnswer = questions[currentQuestionIndex].answer.trim().toLowerCase();
 
         if (userAnswer === correctAnswer) {
             resultMessageEl.textContent = "せいかい！🎉";
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultMessageEl.classList.add('correct');
             score++;
         } else {
-            resultMessageEl.textContent = `ざんねん！正解は「${riddles[currentQuestionIndex].answer}」でした！`;
+            resultMessageEl.textContent = `ざんねん！正解は「${questions[currentQuestionIndex].answer}」でした！`;
             resultMessageEl.classList.remove('correct');
             resultMessageEl.classList.add('incorrect');
         }
@@ -72,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
         quizArea.classList.add('hidden');
         scoreArea.classList.remove('hidden');
         
-        if (score === riddles.length) {
+        if (score === questions.length) {
             finalScoreEl.innerHTML = 'おめでとうございます！🎉<br>10点満点です。この画面をフロントにお見せください。';
         } else {
-            finalScoreEl.textContent = `${riddles.length}問中、${score}問正解しました！`;
+            finalScoreEl.textContent = `${questions.length}問中、${score}問正解しました！`;
         }
     }
 
