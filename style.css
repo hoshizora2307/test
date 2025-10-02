@@ -52,7 +52,7 @@ body {
     to { background-position: 1000px 1000px; }
 }
 
-/* オープニング画面のタイトル */
+/* タイトル */
 .splash-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 3.8em;
@@ -100,10 +100,10 @@ body {
 }
 
 .developer-name {
-    font-size: 1.5em;
-    color: #4CAF50;
+    font-size: 1.5em; /* 特に目立たせる */
+    color: #4CAF50; /* 緑色で強調 */
     text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
-    animation: glow 1.5s infinite alternate 4s;
+    animation: glow 1.5s infinite alternate 4s; /* 光るアニメーション */
 }
 
 @keyframes fade-in {
@@ -140,6 +140,7 @@ body {
     padding-bottom: 20px;
 }
 
+/* メインコンテンツ表示時のスクロールを許可 */
 body.main-loaded {
     overflow-y: auto;
 }
