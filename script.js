@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             answer: "アンタレス"
         },
         { 
-            question: "はくちょう座のくちばしに位置する、夏の大三角を形作る星はどれでしょう？",
+            question: "はくちょう座のしっぽに位置する、夏の大三角を形作る星はどれでしょう？",
             options: ["デネブ", "ベガ", "アルタイル", "ポラリス"],
             answer: "デネブ"
         },
