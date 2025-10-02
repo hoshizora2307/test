@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10問なぞなぞアプリ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>なぞなぞアプリ</h1>
+            <p id="question-count"></p>
+        </header>
+
+        <main>
+            <div id="quiz-area">
+                <p id="question"></p>
+                <input type="text" id="answer-input" placeholder="答えを入力してね">
+                <button id="submit-btn">こたえる！</button>
+                <p id="result-message"></p>
+            </div>
+            
+            <div id="score-area" class="hidden">
+                <p id="final-score"></p>
+                <button id="restart-btn">もう一度挑戦！</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>プログラム制作：hoshizora2307</p>
+            <p>問題監修：高瀬敏行</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
