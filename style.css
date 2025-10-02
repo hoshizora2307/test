@@ -1,34 +1,173 @@
+/* ベーススタイル */
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    background: linear-gradient(to bottom, #d6eaf8, #aed6f1, #85c1e9);
+    background-color: #0d1117; /* ダークな背景色 */
+    color: #e6edf3; /* 明るい文字色 */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     text-align: center;
-    color: #333;
+    overflow: hidden; /* オープニング中はスクロール禁止 */
+    position: relative;
 }
 
+/* オープニング画面全体 */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d1117;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 最前面に表示 */
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 背景の星アニメーション */
+.starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 80px 70px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 120px 40px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 150px 90px, #eee, rgba(0,0,0,0)); /* もっと多く追加可能 */
+    background-size: 200px 200px;
+    animation: star-move 60s linear infinite; /* 星が流れるアニメーション */
+    opacity: 0.8;
+}
+
+@keyframes star-move {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+/* タイトル */
+.splash-title {
+    font-family: 'Orbitron', sans-serif; /* SF感のあるフォント */
+    font-size: 3.8em;
+    color: #61dafb; /* サイバー感のある水色 */
+    text-shadow: 0 0 15px rgba(97, 218, 251, 0.8), 0 0 30px rgba(97, 218, 251, 0.6);
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    animation: typing 3s steps(12, end) forwards, glitch-text 0.5s infinite alternate 3s; /* タイピングとグリッチ */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #61dafb;
+    max-width: 0; /* タイピングアニメーション用 */
+}
+
+/* タイピングアニメーション */
+@keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 100%; }
+}
+
+/* グリッチエフェクト */
+@keyframes glitch-text {
+    0% { transform: translate(0); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8); }
+    20% { transform: translate(-2px, 2px); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8), 2px -2px 5px #e74c3c; }
+    40% { transform: translate(-2px, -2px); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8), -2px 2px 5px #f1c40f; }
+    60% { transform: translate(2px, 2px); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8), 2px 2px 5px #3498db; }
+    80% { transform: translate(2px, -2px); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8), -2px -2px 5px #2ecc71; }
+    100% { transform: translate(0); text-shadow: 0 0 15px rgba(97, 218, 251, 0.8); }
+}
+
+/* プログラム製作者名 */
+.splash-developer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    color: #a7b7c7;
+    margin-top: 10px;
+    opacity: 0; /* 遅れて表示 */
+    animation: fade-in 1s forwards 3.5s; /* タイピング後にフェードイン */
+}
+
+.developer-name {
+    font-size: 1.5em; /* 特に目立たせる */
+    color: #4CAF50; /* 緑色で強調 */
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    animation: glow 1.5s infinite alternate 4s; /* 光るアニメーション */
+}
+
+@keyframes fade-in {
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+    to { text-shadow: 0 0 20px rgba(76, 175, 80, 1), 0 0 30px rgba(76, 175, 80, 0.8); }
+}
+
+/* LOADING...テキスト */
+.splash-loading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-top: 30px;
+    animation: pulse-light 1.5s infinite alternate, fade-in 1s forwards 4.5s;
+    opacity: 0;
+}
+
+@keyframes pulse-light {
+    from { text-shadow: 0 0 5px #fff; }
+    to { text-shadow: 0 0 15px #fff, 0 0 25px rgba(255, 255, 255, 0.5); }
+}
+
+/* メインコンテンツ（初期は非表示） */
+#main-content {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out, visibility 1s ease-in-out;
+    padding-top: 20px; /* 上下の余白を確保 */
+    padding-bottom: 20px;
+}
+
+/* メインコンテンツ表示時のスクロールを許可 */
+body.main-loaded {
+    overflow-y: auto;
+}
+
+
+/* --- メインクイズ画面のスタイル --- */
 .container {
-    background-color: #fff;
-    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05); /* 半透明のカード背景 */
+    backdrop-filter: blur(8px); /* 背景をぼかす */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
     width: 90%;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10; /* 手前に表示 */
 }
 
 header h1 {
-    color: #3498db;
-    font-size: 2em;
-    margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
+    color: #61dafb;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
 }
 
 #question-count {
-    color: #27ae60;
+    color: #4CAF50; /* 緑 */
     font-weight: bold;
     font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 #quiz-area {
@@ -36,48 +175,67 @@ header h1 {
 }
 
 #question {
-    font-size: 1.5em;
+    font-size: 1.6em;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #e6edf3;
 }
 
 #answer-input {
-    padding: 10px;
-    border: 2px solid #ccc;
+    padding: 12px;
+    border: 2px solid #61dafb;
     border-radius: 10px;
-    width: 80%;
-    font-size: 1em;
+    width: 70%;
+    font-size: 1.1em;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e6edf3;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#answer-input::placeholder {
+    color: #a7b7c7;
+}
+
+#answer-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
 #submit-btn {
-    padding: 10px 20px;
-    margin-top: 15px;
-    background-color: #3498db;
-    color: white;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: #61dafb;
+    color: #0d1117;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 1em;
-    transition: transform 0.2s;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 #submit-btn:hover {
+    background-color: #4CAF50; /* ホバーで緑に */
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
 }
 
 #result-message {
-    margin-top: 15px;
+    margin-top: 20px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 #result-message.correct {
-    color: #27ae60;
+    color: #4CAF50; /* 緑 */
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
 }
 
 #result-message.incorrect {
-    color: #e74c3c;
+    color: #e74c3c; /* 赤 */
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
 }
 
 #score-area {
@@ -85,25 +243,30 @@ header h1 {
 }
 
 #final-score {
-    font-size: 2em;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
     font-weight: bold;
-    color: #3498db;
+    color: #61dafb;
+    text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
 }
 
 #restart-btn {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #27ae60;
-    color: white;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background-color: #4CAF50; /* 緑 */
+    color: #0d1117;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 1em;
-    transition: transform 0.2s;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 #restart-btn:hover {
+    background-color: #61dafb; /* ホバーで水色に */
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
 }
 
 .hidden {
@@ -111,7 +274,8 @@ header h1 {
 }
 
 footer {
-    margin-top: 40px;
-    font-size: 0.8em;
-    color: #888;
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #a7b7c7;
+    line-height: 1.5;
 }
