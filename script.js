@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const riddles = [
-        { question: "いつもキラキラ光っているのに、ぜったい触れないものは何？", answer: "星" },
-        { question: "昼間は隠れているけど、夜になるとみんなに見えるものは何？", answer: "月" },
-        { question: "黒い服を着て、たくさんの宝石をちりばめているものは何？", answer: "夜空" },
-        { question: "地球の周りを回っていて、たまに願いを叶えてくれるものは何？", answer: "流れ星" },
-        { question: "まるで大きな砂時計のように、時間とともに形を変えるものは何？", answer: "月" },
-        { question: "お風呂に入っていると、見えてくるたくさんの泡。実は宇宙にあるものは何？", answer: "星雲" },
-        { question: "毎日同じ場所から出発して、決して遅刻しないものは何？", answer: "太陽" },
-        { question: "たくさん集まると、星座になるものは何？", answer: "星" },
-        { question: "黒い布をかぶっているのに、いつも光を放っているものは何？", answer: "太陽" },
-        { question: "いつも宇宙空間を旅しているのに、決して疲れないものは何？", answer: "宇宙船" }
+        { question: "「夏の大三角」を形成する３つの１等星。ベガ・アルタイルともう一つは何？", answer: "デネブ" ｝,
+        { question: "「火星に対抗するもの」という名の恒星は何？", answer: "アンタレス" },
+        { question: "国際天文学連合が定めている星座の数は何個？", answer: "88個" },
+        { question: "「北斗七星」は何座にある？", answer: "おおぐま座" },
+        { question: "「大三角」がない唯一の季節は？", answer: "秋" },
+        { question: "お隣の銀河の名前は？", answer: "アンドロメダ銀河" },
+        { question: "一番明るく見える星(恒星)は何？", answer: "シリウス" },
+        { question: "1等星の中で、最も暗い星は何？", answer: "レグルス" },
+        { question: "「へびつかい座」の頭の部分の星の名前は？", answer: "ラスアルハゲ" },
+        { question: "2017年に初めて観測した恒星間天体の名前は？", answer: "オウムアムア" }
     ];
 
     let currentQuestionIndex = 0;
